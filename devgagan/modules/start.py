@@ -192,35 +192,71 @@ async def terms(client, message):
 @app.on_message(filters.command("plan") & filters.private)
 async def plan(client, message):
     plan_text = (
-       "> 💰 **Premium Price**:\n\n Starting from 20 rs for 10 days payment no 9329548617 INR accepted via **__Amazon Gift Card__** (terms and conditions apply).\n"
-        "📥 **Download Limit**: Users can download up to 100,000 files in a single batch command.\n"
-        "🛑 **Batch**: You will get two modes /bulk and /batch.\n"
-        "   - Users are advised to wait for the process to automatically cancel before proceeding with any downloads or uploads.\n\n"
-        "📜 **Terms and Conditions**: For further details and complete terms and conditions, please send /terms.\n" 
+        "💎 **Upgrade to Premium** 💎\n\n"
+        "🚀 **Exclusive Premium Features**\n"
+        "✅ No need to verify every 2 hours ⏳\n"
+        "✅ Bulk mode: Upload up to 2000 files 📂\n"
+        "✅ No 300-second waiting time ⏱️\n\n"
+        "🔹 **Free Plan User**\n"
+        "⏳ Expiry: Never 🕰️\n"
+        "💰 Price: Rs 0 / $0.00 USD\n\n"
+        "🔟 **10-Day Plan**\n"
+        "💰 Price: Rs 50 🇮🇳 / $0.60 USD\n"
+        "⏳ Duration: 10 days\n\n"
+        "💰 **20-Day Plan**\n"
+        "💰 Price: Rs 90 🇮🇳 / $1.08 USD\n"
+        "⏳ Duration: 20 days\n\n"
+        "🪙 **Monthly Plan**\n"
+        "💰 Price: Rs 130 🇮🇳 / $1.55 USD\n"
+        "⏳ Duration: 30 days\n\n"
+        "📌 **Payment Methods:**\n"
+        "- QR Code: Click below 👇\n\n"
+        "📤 **After Payment:**\n"
+        "1️⃣ Send a payment screenshot below 👇\n"
+        "2️⃣ Tap the Contact Now button to complete your purchase 🤝\n\n"
+        "💌 We're here for you! 💕"
     )
-     
+
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
+            [InlineKeyboardButton("🧾 Click Here for QR Code", url="https://myappme.shop/img/file_200.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
         ]
     )
     await message.reply_text(plan_text, reply_markup=buttons)
- 
- 
+
+
 @app.on_callback_query(filters.regex("see_plan"))
 async def see_plan(client, callback_query):
     plan_text = (
-        "> 💰**Premium Price**\n\n Starting from $2 or 200 INR accepted via **__Amazon Gift Card__** (terms and conditions apply).\n"
-        "📥 **Download Limit**: Users can download up to 100,000 files in a single batch command.\n"
-        "🛑 **Batch**: You will get two modes /bulk and /batch.\n"
-        "   - Users are advised to wait for the process to automatically cancel before proceeding with any downloads or uploads.\n\n"
-        "📜 **Terms and Conditions**: For further details and complete terms and conditions, please send /terms or click See Terms👇\n"
+        "💎 **Upgrade to Premium** 💎\n\n"
+        "🚀 **Exclusive Premium Features**\n"
+        "✅ No need to verify every 2 hours ⏳\n"
+        "✅ Bulk mode: Upload up to 2000 files 📂\n"
+        "✅ No 300-second waiting time ⏱️\n\n"
+        "🔹 **Free Plan User**\n"
+        "⏳ Expiry: Never 🕰️\n"
+        "💰 Price: Rs 0 / $0.00 USD\n\n"
+        "🔟 **10-Day Plan**\n"
+        "💰 Price: Rs 50 🇮🇳 / $0.60 USD\n"
+        "⏳ Duration: 10 days\n\n"
+        "💰 **20-Day Plan**\n"
+        "💰 Price: Rs 90 🇮🇳 / $1.08 USD\n"
+        "⏳ Duration: 20 days\n\n"
+        "🪙 **Monthly Plan**\n"
+        "💰 Price: Rs 130 🇮🇳 / $1.55 USD\n"
+        "⏳ Duration: 30 days\n\n"
+        "📌 **Payment Methods:**\n"
+        "- QR Code: Click below 👇\n\n"
+        "📤 **After Payment:**\n"
+        "1️⃣ Send a payment screenshot below 👇\n"
+        "2️⃣ Tap the Contact Now button to complete your purchase 🤝\n\n"
+        "💌 We're here for you! 💕"
     )
-     
+
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
+            [InlineKeyboardButton("🧾 Click Here for QR Code", url="https://myappme.shop/img/file_200.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
         ]
     )
