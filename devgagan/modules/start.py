@@ -249,7 +249,7 @@ async def see_plan(client, callback_query):
         "💰 Price: ₹130 🇮🇳 / **$1.56 USDT**\n\n"
 
         "📌 **Payment Methods**:\n"
-        "- QR Code: [Click Here for QR](https://myappme.shop/img/file_200.jpg)\n"
+        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1751282168015.jpg)\n"
         "- For International payment, Contact Admin\n\n"
         
         "📤 **After Payment**:\n"
@@ -262,7 +262,7 @@ async def see_plan(client, callback_query):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("🧾 Get QR Code", url="https://myappme.shop/img/file_200.jpg")],
+            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1751282168015.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
         ]
     )
