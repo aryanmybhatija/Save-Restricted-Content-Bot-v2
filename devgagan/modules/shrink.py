@@ -24,6 +24,7 @@ from devgagan.core.func import *
 from datetime import datetime, timedelta
 from motor.motor_asyncio import AsyncIOMotorClient
 from config import MONGO_DB, WEBSITE_URL, AD_API, LOG_GROUP  
+from pyrogram.types import Message
  
  
 tclient = AsyncIOMotorClient(MONGO_DB)
@@ -75,11 +76,11 @@ async def token_handler(client, message):
 
     # Random image selection
     images = [
-        "https://myappme.shop/img/file_224.jpg",
-        "https://myappme.shop/img/file_225.jpg",
-        "https://myappme.shop/img/file_227.jpg",
-        "https://myappme.shop/img/file_253.jpg",
-        "https://myappme.shop/img/file_254.jpg",
+        "https://ar-hosting.pages.dev/1751519808272.jpg",
+        "https://ar-hosting.pages.dev/1751519809076.jpg",
+        "https://ar-hosting.pages.dev/1751519807441.jpg",
+        "https://ar-hosting.pages.dev/1751519809887.jpg",
+        "https://ar-hosting.pages.dev/1751519810683.jpg",
         "https://myappme.shop/img/file_255.jpg",
         "https://myappme.shop/img/file_256.jpg",
         "https://myappme.shop/img/file_257.jpg"
@@ -159,3 +160,25 @@ async def smart_handler(client, message):
             "3. All functions unlocked",
             reply_markup=button
  )
+
+# 🔗 /sharelink command
+@app.on_message(filters.command("shareme"))
+async def sharelink_handler(client, message: Message):
+    bot = await client.get_me()
+    bot_username = bot.username
+
+    bot_link = f"https://t.me/{bot_username}?start=True"
+    share_link = f"https://t.me/share/url?url={bot_link}&text=🚀%20Check%20out%20this%20awesome%20bot%20to%20unlock%20restricted%20Telegram%20content!%20Try%20now%20"
+
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("📤 Share Me With Others 🫠", url=share_link)]
+    ])
+
+    await message.reply_text(
+        f"✨ **Spread the Magic!**\n\n"
+        f"Help others discover this bot that can save **restricted channel media**, even if forwarding is off! 🔒\n\n"
+        f"Click a button below 👇 share me with your friends!",
+        reply_markup=reply_markup
+    )
+
+ 

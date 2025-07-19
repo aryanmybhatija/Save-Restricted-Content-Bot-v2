@@ -18,11 +18,10 @@ from config import OWNER_ID
 from devgagan.core.func import subscribe
 import asyncio
 from devgagan.core.func import *
-from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message, BotCommand
 from pyrogram.raw.functions.bots import SetBotInfo
 from pyrogram.raw.types import InputUserSelf
 
-from pyrogram.types import BotCommand, InlineKeyboardButton, InlineKeyboardMarkup
  
 @app.on_message(filters.command("set"))
 async def set(_, message):
@@ -65,44 +64,46 @@ async def set(_, message):
 help_pages = [
     (
         "📝 **Bot Commands Overview (1/2)**:\n\n"
+        "🆕. **/guide**\n"
+        "> To Learn How to Use\n\n"
+        "⭐. **/id**\n"
+        "> To Find Your id/channel id/Group id\n\n"
         "1. **/add userID**\n"
         "> Add user to premium (Owner only)\n\n"
         "2. **/rem userID**\n"
         "> Remove user from premium (Owner only)\n\n"
-        "3. **/transfer userID**\n"
-        "> Transfer premium to your beloved major purpose for resellers (Premium members only)\n\n"
-        "4. **/get**\n"
+        "3. **/get**\n"
         "> Get all user IDs (Owner only)\n\n"
-        "5. **/lock**\n"
+        "4. **/lock**\n"
         "> Lock channel from extraction (Owner only)\n\n"
-        "6. **/dl link**\n"
+        "5. **/dl link**\n"
         "> Download videos (Not available Now)\n\n"
-        "7. **/adl link**\n"
+        "6. **/adl link**\n"
         "> Download audio (Not available Now)\n\n"
-        "8. **/login**\n"
+        "7. **/login**\n"
         "> Log into the bot for private channel access\n\n"
-        "9. **/batch**\n"
+        "8. **/batch**\n"
         "> Bulk extraction for posts (After login)\n\n"
     ),
     (
         "📝 **Bot Commands Overview (2/2)**:\n\n"
-        "10. **/logout**\n"
+        "9. **/logout**\n"
         "> Logout from the bot\n\n"
-        "11. **/stats**\n"
+        "10. **/stats**\n"
         "> Get bot stats\n\n"
-        "12. **/plan**\n"
+        "11. **/plan**\n"
         "> Check premium plans\n\n"
-        "13. **/speedtest**\n"
+        "12. **/speedtest**\n"
         "> Test the server speed (not available Now)\n\n"
-        "14. **/terms**\n"
+        "13. **/terms**\n"
         "> Terms and conditions\n\n"
-        "15. **/cancel**\n"
+        "14. **/cancel**\n"
         "> Cancel ongoing batch process\n\n"
-        "16. **/myplan**\n"
+        "15. **/myplan**\n"
         "> Get details about your plans\n\n"
-        "17. **/session**\n"
+        "16. **/session**\n"
         "> Generate Pyrogram V2 session\n\n"
-        "18. **/settings**\n"
+        "17. **/settings**\n"
         "> 1. SETCHATID : To directly upload in channel or group or user's dm use it with -100[chatID]\n"
         "> 2. SETRENAME : To add custom rename tag or username of your channels\n"
         "> 3. CAPTION : To add custom caption\n"
@@ -188,7 +189,6 @@ async def terms(client, message):
     )
     await message.reply_text(terms_text, reply_markup=buttons)
  
- 
 @app.on_message(filters.command("plan") & filters.private)
 async def plan(client, message):
     plan_text = (
@@ -209,7 +209,7 @@ async def plan(client, message):
         "💰 Price: ₹130 🇮🇳 / **$1.56 USDT**\n\n"
 
         "📌 **Payment Methods**:\n"
-        "- QR Code: [Click Here for QR](https://myappme.shop/img/file_200.jpg)\n"
+        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1751282168015.jpg)\n"
         "- For International payment, Contact Admin\n\n"
         
         "📤 **After Payment**:\n"
@@ -222,7 +222,7 @@ async def plan(client, message):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("🧾 Get QR Code", url="https://myappme.shop/img/file_200.jpg")],
+            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1751282168015.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
         ]
     )
@@ -267,3 +267,81 @@ async def see_plan(client, callback_query):
         ]
     )
     await callback_query.message.edit_text(plan_text, reply_markup=buttons, disable_web_page_preview=True)
+
+
+@app.on_message(filters.command("guide"))
+async def guide_command(_, message: Message):
+    image_url = "https://i.postimg.cc/BXkchVpY/image.jpg"  # Direct image URL from PostImage
+    await message.reply_photo(
+        photo=image_url,
+        caption=(
+            "📘 **How to Use Save Restricted Bot**\n\n"
+            "If you want to Download Posts From Public Channels/Groups Just Send me **Post Link**\n"        
+            "🔓 I'll unlock content from restricted channels or groups.\n\n"
+            "Use /settings for Settings 🌝\n\n"
+            "Use Next Button For Private Channels/Groups Guide 👇"
+        ),
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("➡️ Next", callback_data="guide_page_1")]
+        ]),
+        quote=True
+    )
+
+# Second page callback handler
+@app.on_callback_query(filters.regex("^guide_page_2$"))  # ^ and $ ensure exact match
+async def guide_page_2(_, query: CallbackQuery):
+    await query.message.edit_text(
+        "🛠️ **More Features 😎**\n\n"
+        "✅ Supported post formats:\n\n"
+        "Public Link:\n `https://t.me/public_channel/1234`\n\n"
+        "Private Link:\n `https://t.me/c/123456789/55`\n\n"
+        "💡 Use /login only for private source.\n"
+        "Use /id to get user or chat ID.\n\n"
+        "Use /batch to download multiple posts at once 💀\n\n"
+        "Powered by Team_Sonu",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("⬅️ Back", callback_data="guide_page_1")]
+        ])
+    )
+
+# Back to first page
+@app.on_callback_query(filters.regex("^guide_page_1$"))  # ^ and $ ensure exact match
+async def guide_page_1(_, query: CallbackQuery):
+    await query.message.edit_text(
+        "**📘 How to Use Bot Guide 👇**\n\n"
+        "💡 **For Private Channels/Groups**\n\n"
+        "**How to download or forward posts from Private Channel/Groups Where Save is Restricted 💀**\n"
+        "────────────────────\n"
+        "➡️ Send /start\n"
+        "➡️ Send /login\n"
+        "────────────────────\n"
+        "**Now 📲 Enter your mobile number\n like:**\n"
+        "`+91XXXXXXXXXX`\n\n"
+        "📨 You’ll get an OTP from Telegram official chat.\n"
+        "────────────────────\n"
+        "**🔢 Enter the OTP with spaces between digits.**\n"
+        "Example: If OTP is `54321`,\n enter: `5 4 3 2 1`\n\n"
+        "✅ You’ll be logged in successfully!\n"
+        "────────────────────\n"
+        "⚡ Now use /batch to download multiple posts.\n"
+        "▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n"
+        "**हिंदी में 👇**\n\n"
+        "**Bot** का कैसे उपयोग करें\n"
+        "/start कमांड भेजें फिर\n"
+        "/login कमांड भेजें\n"
+        "────────────────────\n"
+        "📲 अब अपना मोबाइल नंबर दर्ज करें:\n"
+        "`+91XXXXXXXXXX`\n\n"
+        "────────────────────\n"
+        "📨 Telegram की official चैट से OTP आएगा\n"     
+        "🔢 OTP को स्पेस के साथ दर्ज करें\n"
+        "उदाहरण: 5 4 3 2 1\n\n"
+        "✅ अब आप सफलतापूर्वक बॉट में लॉग इन हो जाएंगे\n"
+        "────────────────────\n"
+        "⚡ एक बार में कई पोस्ट डाउनलोड करने के लिए /batch का उपयोग करें।"
+        "▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("More Features 😎", callback_data="guide_page_2")]
+        ])
+ )
+
